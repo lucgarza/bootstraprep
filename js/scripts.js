@@ -53,6 +53,23 @@
     navbarCollapse();
     // Collapse the navbar when page is scrolled
     $(window).scroll(navbarCollapse);
+
+    // checkbox row select
+    $('#example').dataTable();
+
+  //Select row table
+  $('#example').on('click', 'tr', function() {
+    var $row = $(this),
+      isSelected = $row.hasClass('selected')
+    $row.toggleClass('selected')
+      .find(':checkbox').prop('checked', !isSelected);
+  });
+
+    // Problem : Checkbox !== select row
+    $("#selectAll, #unselectAll").on("click", function() {
+      var selectAll = this.id === 'selectAll';
+      $("#example tr :checkbox").prop('checked', selectAll);
+    });
   
     // Floating label headings for the contact form
     $(function() {
